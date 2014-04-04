@@ -1,0 +1,33 @@
+<article itemtype="http://schema.org/BlogPosting" itemscope>
+  {% if isFrontPage %}
+    <h2>
+      <span itemprop="name">{{ post.title }}</span>
+      <a href="{{post.url}}" class="post-link" itemprop="url"><span class="glyphicon glyphicon-link"></span></a>
+      <small>
+        <time datetime="{{post.date | date_to_xmlschema }}" itemprop="datePublished">
+          {{ post.date | date_to_string }}
+        </time>
+      </small>
+    </h2>
+  {% else %}
+    <h2>
+      <span itemprop="name">{{ page.title }}</span>
+      <a href="{{page.url}}" class="post-link" itemprop="url"><span class="glyphicon glyphicon-link"></span></a>
+      <small>
+        <time datetime="{{page.date | date_to_xmlschema }}" itemprop="datePublished">
+          {{ page.date | date_to_string }}
+        </time>
+      </small>
+    </h2>
+  {% endif %}
+
+  <div class="post" itemprop="articleBody">
+  {{ content }}
+  </div>
+  <div class="more">
+    <a href="/archive.html" class="more-posts link">
+      <span class="glyphicon glyphicon-paperclip"></span>
+      More posts
+    </a>
+  </div>
+</article>
